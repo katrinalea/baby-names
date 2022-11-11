@@ -1,8 +1,11 @@
-import Gender from "./babyNames";
+import OutputNames from "./colouredNames";
+import ColourSort from "./colouredNames";
+//import FaveNames from "./faveNames";
 function App(): JSX.Element {
   return (
     <>
-      <Gender />
+      <OutputNames />
+      <ColourSort />
     </>
   );
 }
