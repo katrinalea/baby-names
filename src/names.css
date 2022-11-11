@@ -1,0 +1,19 @@
+.boys {
+  background-color: rgb(83, 163, 216);
+  border: 1px;
+  border-style: solid;
+  border-color: antiquewhite;
+  font-size: 30px;
+  width: 150px;
+  border-radius: 10px;
+}
+
+.girls {
+  background-color: pink;
+  border: 1px;
+  border-style: solid;
+  border-color: antiquewhite;
+  font-size: 30px;
+  border-radius: 10px;
+  width: 150px;
+}
