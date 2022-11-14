@@ -1,6 +1,5 @@
 import babyNamesData from "./babyNamesData.json";
 import "./names.css";
-import FaveNames from "./faveNames";
 import { useState } from "react";
 
 interface babyInterface {
@@ -9,29 +8,22 @@ interface babyInterface {
   sex: string;
 }
 
-let faveNamesID: number[] = [];
-
 function ColourSort(): JSX.Element {
   const [name, setName] = useState("");
 
-  function Search(): number[] {
-    for (const item of babyNamesData) {
-      faveNamesID = FaveNames(name, item);
-    }
-    return faveNamesID;
-  }
-
   const data = babyNamesData
     .sort((a, b) => a.name.localeCompare(b.name))
-    .map((data: babyInterface) => {
-      return (
+    .map((data: babyInterface) =>
+      data.name.includes(name.toLowerCase()) ? (
         <>
-          <button key={data.id} className={data.sex}>
+          <button className={data.sex}>
             {data.name}
           </button>
         </>
-      );
-    });
+      ) : (
+        <p></p>
+      )
+    );
 
   return (
     <>
@@ -41,7 +33,6 @@ function ColourSort(): JSX.Element {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <button onClick={Search}>Search</button>
       <button onClick={() => setName("")}>Clear search</button>
       <p> {data}</p>
     </>
