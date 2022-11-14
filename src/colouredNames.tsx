@@ -16,9 +16,7 @@ function ColourSort(): JSX.Element {
     .map((data: babyInterface) =>
       data.name.includes(name.toLowerCase()) ? (
         <>
-          <button className={data.sex}>
-            {data.name}
-          </button>
+          <button className={data.sex}>{data.name}</button>
         </>
       ) : (
         <p></p>
