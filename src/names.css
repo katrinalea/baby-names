@@ -1,4 +1,4 @@
-.boys {
+.m {
   background-color: rgb(83, 163, 216);
   border: 1px;
   border-style: solid;
@@ -8,7 +8,7 @@
   border-radius: 10px;
 }
 
-.girls {
+.f {
   background-color: pink;
   border: 1px;
   border-style: solid;
