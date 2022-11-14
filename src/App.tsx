@@ -1,9 +1,9 @@
-import ColourSort from "./colouredNames";
+import OutputData from "./OutputData";
 //import FaveNames from "./faveNames";
 function App(): JSX.Element {
   return (
     <>
-      <ColourSort />
+      <OutputData />
     </>
   );
 }

@@ -8,20 +8,17 @@ interface babyInterface {
   sex: string;
 }
 
-function ColourSort(): JSX.Element {
+function OutputData(): JSX.Element {
   const [name, setName] = useState("");
 
   const data = babyNamesData
     .sort((a, b) => a.name.localeCompare(b.name))
-    .map((data: babyInterface) =>
-      data.name.includes(name.toLowerCase()) ? (
-        <>
-          <button className={data.sex}>{data.name}</button>
-        </>
-      ) : (
-        <p></p>
-      )
-    );
+    .filter((data: babyInterface) => data.name.includes(name.toLowerCase()))
+    .map((data: babyInterface) => (
+      <>
+        <button className={data.sex}>{data.name}</button>
+      </>
+    ));
 
   return (
     <>
@@ -38,4 +35,4 @@ function ColourSort(): JSX.Element {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-export default ColourSort;
+export default OutputData;
