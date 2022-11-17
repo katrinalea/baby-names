@@ -10,26 +10,38 @@ interface babyInterface {
 
 function OutputData(): JSX.Element {
   const [name, setName] = useState("");
-  const [clicked, setClicked] = useState<string>("")
+  const [favouritedNameIDs, setFavouritedNameIDs] = useState<number[]>([])
 
   // const handleClick = () => {
   // setClicked(!clicked)
   // console.log(clicked)},,, this sets allll the buttons as false so they will all stop rendering 
 
-const faveNames: string[] = []
-  const handleClick = () => {
-    setClicked()
-    faveNames.push(clicked)
+//const faveNamesIDs: number[] = []
+
+  const handleClick = (favouritedID:number) => {
+    console.log("function is being called" + favouritedID)
+    favouritedNameIDs.includes(favouritedID) ? setFavouritedNameIDs(favouritedNameIDs.splice(favouritedID)) : setFavouritedNameIDs([...favouritedNameIDs, favouritedID])
+    
   }
+
+  //want to add the id to fave names, but remove it when the button is clicked again
 
 
   const data = babyNamesData
     .sort((a, b) => a.name.localeCompare(b.name))
   const orderedData = data
-    .filter((data: babyInterface) => data.name.toLowerCase().includes(name.toLowerCase())) // && clicked = false, when one button is clicked they all go
+    .filter((data: babyInterface) => data.name.toLowerCase().includes(name.toLowerCase()) && !favouritedNameIDs.includes(data.id))
     .map((data: babyInterface) => 
       <>
-        <button id="{data.id}" className={data.sex} onClick={handleClick}>{data.name}</button>
+        <button key = {data.id} className={data.sex} onClick={() => handleClick(data.id)}>{data.name}</button>
+      </>
+    );
+
+    const favouritedData = data
+    .filter((data: babyInterface) => data.name.toLowerCase().includes(name.toLowerCase()) && favouritedNameIDs.includes(data.id))
+    .map((data: babyInterface) => 
+      <>
+        <button key = {data.id} className={data.sex} onClick={() => handleClick(data.id)}>{data.name}</button>
       </>
     );
 
@@ -49,7 +61,7 @@ const faveNames: string[] = []
       <button onClick={() => setName("")}>Clear search</button>
       <br />
       <p> Your favourited names are:</p>
-      <p>{orderedData}</p>
+      <p>{favouritedData}</p>
       <hr />
       <p>{orderedData}</p>
       
@@ -60,5 +72,5 @@ const faveNames: string[] = []
   );
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+
 export default OutputData;
