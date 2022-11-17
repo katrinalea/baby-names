@@ -21,4 +21,13 @@
 .page {
   text-align: center;
   background-color: antiquewhite;
+  font-size: medium;
+  font-stretch: expanded;
+}
+
+.header {
+  text-align: center;
+  background-color: antiquewhite;
+  border: black;
+  border-style: dashed;
 }
